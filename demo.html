@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Modal - Demo</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<h1>Modal - Demo</h1>
+	<hr>
+	<button>Show</button>
+</body>
+
+<script type="module">
+	import Modal from './Modal.js';
+
+	const modal = Modal({
+		title: 'Title of modal',
+		content: 'Content of modal',
+		buttons: [
+			{ name: 'OK', primary: true, onClick: () => {
+				console.log('OK!!');
+				modal.hide();
+			}},
+			{ name: 'Cancel' }
+		],
+		width: 360
+	});
+
+	document.querySelector('button').addEventListener('click', modal.show);
+
+</script>
+
+<style>
+	body {
+		font-size: 13px;
+	}
+</style>
+
+</html>
