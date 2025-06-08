@@ -10,7 +10,6 @@
 
 <body>
 	<h1>Modal - Demo</h1>
-	<hr>
 	<button>Show</button>
 </body>
 
@@ -20,6 +19,8 @@
 	const modal = Modal({
 		title: 'Title of modal',
 		content: 'Content of modal',
+		width: 360,
+		hideOut: true,
 		buttons: [
 			{ name: 'OK', primary: true, onClick: () => {
 				console.log('OK!!');
@@ -27,16 +28,25 @@
 			}},
 			{ name: 'Cancel' }
 		],
-		width: 360
 	});
 
-	document.querySelector('button').addEventListener('click', modal.show);
+	document.querySelector('button').addEventListener('click', () => {
+		modal.show();
+		modal.showSpin();
+	});
 
 </script>
 
 <style>
 	body {
+		font-family: sans-serif;
 		font-size: 13px;
+		margin: 0;
+		padding: 32px;
+	}
+
+	button {
+		padding: 6px 10px;
 	}
 </style>
 

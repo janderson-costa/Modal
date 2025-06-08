@@ -6,6 +6,8 @@
 const defaultOptions = {
 	title: '', // string,
 	content: '', // string/HTMLElement,
+	width: 360, // number
+	hideOut: true, // boolean - Fechar o modal ao clicar fora
 	buttons: null, /* [
 		{
 			name: 'OK',
@@ -18,7 +20,6 @@ const defaultOptions = {
 			onClick: function
 		}
 	]*/
-	width: 360, // number
 };
 
 export default function Modal(options) {
@@ -53,7 +54,10 @@ export default function Modal(options) {
 		const $content = $overlay.querySelector('.modal-content');
 
 		// overlay
-		$overlay.addEventListener('click', hide);
+		$overlay.addEventListener('click', () => {
+			if (options.hideOut)
+				hide();
+		});
 
 		// modal
 		$modal.addEventListener('click', event => event.stopPropagation());
@@ -138,7 +142,8 @@ export default function Modal(options) {
 		}
 
 		if (event.key == 'Escape') {
-			destroy();
+			if (options.hideOut)
+				destroy();
 		}
 	}
 }
