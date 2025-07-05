@@ -7,7 +7,7 @@ const buttonDefaultOptions = {
 	name: 'OK',
 	primary: true,
 	focused: false,
-	onClick: null
+	onClick: null,
 };
 const modalDefaultOptions = {
 	title: 'Title', // string,
